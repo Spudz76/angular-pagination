@@ -11,28 +11,28 @@ Include `angular-pagination.js` after `angular.min.js`.
 Add the `Pagination` module as a dependency when creating your app, e.g.
 
 ```
-var app = angular.module('myApp', ['Pagination']);`
+var app = angular.module('myApp', ['Pagination'])
 ```
 
 Inject the `Pagination` service to the controller containing the data which you want to paginate, and set it on the $scope:
 
 ```
-app.controller('MyCtrl', ['$scope', 'Pagination',   
-function($scope, Pagination) {
-  $scope.pagination = Pagination.getNew();
-}]);
+app.controller('MyCtrl', ['$scope', 'Pagination',
+function($scope, Pagination){
+  $scope.pagination = Pagination.getNew()
+}])
 ```
 
 This defaults to 5 items per page. You can pass an optional parameter with the number of items you want per page:
 
 ```
-$scope.pagination = Pagination.getNew(10);
+$scope.pagination = Pagination.getNew(10)
 ```
 
 Finally, calculate and set the number of pages depending on your data. Here's an example with a pre-defined `$scope.posts` array for a blog application:
 
 ```
-$scope.pagination.numPages = Math.ceil($scope.posts.length/$scope.pagination.perPage);
+$scope.pagination.numPages = Math.ceil($scope.posts.length/$scope.pagination.perPage)
 ```
 
 Replace `$scope.posts` with whatever data you have initialised.
