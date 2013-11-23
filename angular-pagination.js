@@ -41,6 +41,11 @@ paginationModule.factory("Pagination", function(){
    */
   pagination.prototype.page = 1
   /**
+   * Max number of page buttons to show
+   * @type {number}
+   */
+  pagination.prototype.buttons_max = 5
+  /**
    * Range variables for displaying record stats eg:
    *  {{ pg.range.start }} - {{ pg.range.end }} of {{ pg.range.total }} entries
    * @type {{start: number, end: number, total: number}}
@@ -121,6 +126,37 @@ paginationModule.factory("Pagination", function(){
     if(page < 1) page = 1
     if(page > this.pages) page = this.pages
     return (page - 1) * this.limit
+  }
+  /**
+   * Get a range of buttons
+   *  Use the buttons_max setting to change the amount, defaults to 5
+   * @returns {Array}
+   */
+  pagination.prototype.buttons = function(){
+    var buttons = []
+      , start, end
+    if(1 === this.page){
+      start = 1
+      end = this.buttons_max <= this.pages ? this.buttons_max : this.pages
+    } else if(this.page === this.pages){
+      start = this.pages - (this.buttons_max - 1)
+      end = this.pages
+      if(start < 1) start = 1
+    } else {
+      start = this.page - Math.floor(this.buttons_max / 2)
+      end = this.page + Math.floor(this.buttons_max / 2)
+      if(start < 1){
+        start = 1
+        end++
+      }
+      if(end > this.pages){
+        end = this.pages
+        start = this.pages - (this.buttons_max - 1)
+        if(start < 1) start = 1
+      }
+    }
+    for(var i=start; i <= end; i++) buttons.push(i)
+    return buttons
   }
   /**
    * Set the properties of the pagination

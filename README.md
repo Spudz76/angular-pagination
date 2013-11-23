@@ -63,19 +63,21 @@ function($scope, Pagination){
 }])
 ```
 
-Here is an example view using jade with bootstrap buttons
+Here is an example view using jade with bootstrap buttons it uses the `buttons()` method
+which returns an array of buttons relative to the current page position
 ```jade
 div
     div.pull-right
-      ul.pager(style="margin: 0")
-        li(ng-class="{disabled: pg.isFirst()}")
-          a(href="", ng-click="start = pg.first(); list()", ng-disabled="pg.isFirst()") First
-        li(ng-class="{disabled: pg.isFirst()}")
-          a(href="", ng-click="start = pg.previous(); list()", ng-disabled="pg.isFirst()") Previous
-        li(ng-class="{disabled: pg.isLast()}")
-          a(href="", ng-click="start = pg.next(); list()", ng-disabled="pg.isLast()") Next
-        li(ng-class="{disabled: pg.isLast()}")
-          a(href="", ng-click="start = pg.last(); list()", ng-disabled="pg.isLast()") Last
+      div.btn-group
+        button.btn.btn-default(ng-disabled="pg.isFirst()", ng-click="start = pg.first(); list()")
+          span.glyphicon.glyphicon-fast-backward
+        button.btn.btn-default(ng-disabled="pg.isFirst()", ng-click="start = pg.previous(); list()")
+          span.glyphicon.glyphicon-step-backward
+        button.btn.btn-default(ng-repeat="n in pg.buttons()", ng-disabled="n == pg.page") {{ n }}
+        button.btn.btn-default(ng-disabled="pg.isLast()", ng-click="start = pg.next(); list()")
+          span.glyphicon.glyphicon-step-forward
+        button.btn.btn-default(ng-disabled="pg.isLast()", ng-click="start = pg.last(); list()")
+          span.glyphicon.glyphicon-fast-forward
     | {{ pg.range.start }} - {{ pg.range.end }} of {{ pg.range.total }} entries
 ```
 
