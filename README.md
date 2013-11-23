@@ -63,19 +63,19 @@ function($scope, Pagination){
 }])
 ```
 
-Here is an example view
+Here is an example view using jade with bootstrap buttons
 ```jade
 div
     div.pull-right
       ul.pager(style="margin: 0")
         li(ng-class="{disabled: pg.isFirst()}")
-          a(href="", ng-click="start = pg.first(); list()" ng-disabled="pg.isFirst()") First
+          a(href="", ng-click="start = pg.first(); list()", ng-disabled="pg.isFirst()") First
         li(ng-class="{disabled: pg.isFirst()}")
-          a(href="", ng-click="start = pg.previous(); list()" ng-disabled="pg.isFirst()") Previous
+          a(href="", ng-click="start = pg.previous(); list()", ng-disabled="pg.isFirst()") Previous
         li(ng-class="{disabled: pg.isLast()}")
-          a(href="", ng-click="start = pg.next(); list()" ng-disabled="pg.isLast()") Next
+          a(href="", ng-click="start = pg.next(); list()", ng-disabled="pg.isLast()") Next
         li(ng-class="{disabled: pg.isLast()}")
-          a(href="", ng-click="start = pg.last(); list()" ng-disabled="pg.isLast()") Last
+          a(href="", ng-click="start = pg.last(); list()", ng-disabled="pg.isLast()") Last
     | {{ pg.range.start }} - {{ pg.range.end }} of {{ pg.range.total }} entries
 ```
 
