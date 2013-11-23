@@ -63,6 +63,22 @@ function($scope, Pagination){
 }])
 ```
 
+Here is an example view
+```jade
+div
+    div.pull-right
+      ul.pager(style="margin: 0")
+        li(ng-class="{disabled: pg.isFirst()}")
+          a(href="", ng-click="start = pg.first(); list()" ng-disabled="pg.isFirst()") First
+        li(ng-class="{disabled: pg.isFirst()}")
+          a(href="", ng-click="start = pg.previous(); list()" ng-disabled="pg.isFirst()") Previous
+        li(ng-class="{disabled: pg.isLast()}")
+          a(href="", ng-click="start = pg.next(); list()" ng-disabled="pg.isLast()") Next
+        li(ng-class="{disabled: pg.isLast()}")
+          a(href="", ng-click="start = pg.last(); list()" ng-disabled="pg.isLast()") Last
+    | {{ pg.range.start }} - {{ pg.range.end }} of {{ pg.range.total }} entries
+```
+
 ## Rendering with Filters
 
 There is a custom filter called `startFrom` to help you rendering items per page.
