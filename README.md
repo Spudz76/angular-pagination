@@ -11,7 +11,7 @@ Include `angular-pagination.js` after `angular.min.js`.
 Add the `Pagination` module as a dependency when creating your app, e.g.
 
 ```
-var app = angular.module('myApp', ['Pagination'])
+var app = angular.module('myApp', ['pagination'])
 ```
 
 Inject the `Pagination` service to the controller containing the data which you want to paginate, and set it on the $scope:
