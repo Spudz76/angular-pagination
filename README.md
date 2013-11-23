@@ -3,7 +3,7 @@
 An AngularJS module for pagination on static or dynamic data. No directives here, just a service and some optional filters.
 
 Mostly based on various snippets which [@svileng](https://twitter.com/svileng) found on JSFiddle, afterwards
-modified to support a wider variety of data sets. Also several useful helpers to cut down on controller and view match.
+modified to support a wider variety of data sets. Also several useful helpers to cut down on controller and view math.
 
 ## Quick start
 
@@ -83,8 +83,8 @@ div
 
 There is a custom filter called `startFrom` to help you rendering items per page.
 
-```
-<div ng-repeat="post in posts | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage">
+```html
+<div ng-repeat="post in posts | startFrom: pg.start | limitTo: pg.limit">
 	<!-- stuff -->
 </div>
 ```
@@ -93,26 +93,27 @@ Again, replace `post in posts` with your data.
 
 For pagination links you can either use Next/Previous buttons or page numbers (using another built-in filter called `range`).
 
-```
+```html
 <button ng-click="pagination.prevPage()">Previous</button>
 <button ng-click="pagination.nextPage()">Next</button>
 ```
 
 and for rendering page numbers:
 
-```
-<span ng-repeat="n in [] | range: pagination.numPages">
-	<button ng-click="pagination.toPageId(n)">{{n + 1}}</button>
+```html
+<span ng-repeat="n in [] | range: pg.pages">
+	<button ng-click="pagination.toPageId(n)">{{n}}</button>
 <span>
 ```
 
-Note that the first page is actually __0__ hence the {{n + 1}}.
+Optionally you can add some logic to hide/disable the buttons using the `pg.isFirst()` and `pg.isLast()` functions;
+here's an example:
 
-Optionally you can add some logic to hide/disable the buttons using the `pagination.page` and `pagination.numPages` attributes; here's an example:
-
-```
-ng-hide="pagination.page == 0" ng-click="pagination.prevPage()"
-ng-hide="pagination.page + 1 >= pagination.numPages" ng-click="pagination.nextPage()"
+```html
+<button ng-disabled="pg.isFirst()" ng-click="pg.set({start: pg.first()})">First</button>
+<button ng-disabled="pg.isFirst()" ng-click="pg.set({start: pg.previous()})">Previous</button>
+<button ng-disabled="pg.isLast()" ng-click="pg.set({start: pg.next()}).">Next</button>
+<button ng-disabled="pg.isLast()" ng-click="pg.set({start: pg.last()}).">Last</button>
 ```
 
 ## Contributions
