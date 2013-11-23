@@ -112,6 +112,17 @@ paginationModule.factory("Pagination", function(){
     return Math.floor((this.pages - 1) * this.limit)
   }
   /**
+   * Get the starting point of a specific page
+   * @param page
+   * @returns {number}
+   */
+  pagination.prototype.forPage = function(page){
+    page = parseInt(page,10) || 1
+    if(page < 1) page = 1
+    if(page > this.pages) page = this.pages
+    return (page - 1) * this.limit
+  }
+  /**
    * Set the properties of the pagination
    * @param obj
    */

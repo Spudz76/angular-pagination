@@ -103,7 +103,7 @@ and for rendering page numbers:
 
 ```html
 <span ng-repeat="n in [] | paginationRange: pg.pages">
-	<button ng-click="pagination.toPageId(n)">{{n}}</button>
+	<button ng-click="pg.set({start: pg.forPage(n)})">{{n}}</button>
 <span>
 ```
 
