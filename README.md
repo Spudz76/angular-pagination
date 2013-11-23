@@ -73,7 +73,7 @@ div
           span.glyphicon.glyphicon-fast-backward
         button.btn.btn-default(ng-disabled="pg.isFirst()", ng-click="start = pg.previous(); list()")
           span.glyphicon.glyphicon-step-backward
-        button.btn.btn-default(ng-repeat="n in pg.buttons()", ng-disabled="n == pg.page") {{ n }}
+        button.btn.btn-default(ng-repeat="n in pg.buttons()", ng-class="{'btn-primary': (n == pg.page)}") {{ n }}
         button.btn.btn-default(ng-disabled="pg.isLast()", ng-click="start = pg.next(); list()")
           span.glyphicon.glyphicon-step-forward
         button.btn.btn-default(ng-disabled="pg.isLast()", ng-click="start = pg.last(); list()")
