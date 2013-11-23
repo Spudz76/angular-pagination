@@ -85,6 +85,9 @@ div
     | {{ pg.range.start }} - {{ pg.range.end }} of {{ pg.range.total }} entries
 ```
 
+Which should yield something like this:
+![Pagination Bar Example](http://ft.trillian.im/32beade6276ff4c3b71543f301afc6fa489725b7/6lm6jqGoRPs3t7wA4opQxfUdshv3H.jpg)
+
 ## Rendering with Filters
 
 There is a custom filter called `paginationStart` to help you rendering items per page.
