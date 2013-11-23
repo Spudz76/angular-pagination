@@ -12,8 +12,8 @@ files = [
   JASMINE_ADAPTER,
   'http://code.angularjs.org/1.0.7/angular.js',
   'http://code.angularjs.org/1.0.7/angular-mocks.js',
-  'simplePagination.js',
-  'simplePagination.spec.js'
+  'angular-pagination.js',
+  'angular-pagination.spec.js'
 ];
 
 
