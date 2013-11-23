@@ -125,14 +125,14 @@ paginationModule.factory("Pagination", function(){
   return pagination
 })
 
-paginationModule.filter("startFrom", function(){
+paginationModule.filter("paginationStart", function(){
   return function(input, start){
     start = parseInt(start,10)
     return input.slice(+start)
   }
 })
 
-paginationModule.filter("range", function(){
+paginationModule.filter("paginationRange", function(){
   return function(input, total){
     total = parseInt(total,10)
     for(var i = 1; i <= total; i++) input.push(i)

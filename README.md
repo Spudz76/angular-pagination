@@ -81,27 +81,28 @@ div
 
 ## Rendering with Filters
 
-There is a custom filter called `startFrom` to help you rendering items per page.
+There is a custom filter called `paginationStart` to help you rendering items per page.
 
 ```html
-<div ng-repeat="post in posts | startFrom: pg.start | limitTo: pg.limit">
+<div ng-repeat="post in posts | paginationStart: pg.start | limitTo: pg.limit">
 	<!-- stuff -->
 </div>
 ```
 
 Again, replace `post in posts` with your data.
 
-For pagination links you can either use Next/Previous buttons or page numbers (using another built-in filter called `range`).
+For pagination links you can either use Next/Previous buttons or page numbers
+by using another built-in filter called `paginationRange`.
 
 ```html
-<button ng-click="pagination.prevPage()">Previous</button>
-<button ng-click="pagination.nextPage()">Next</button>
+<button ng-click="pg.set({start: pg.previous()})">Previous</button>
+<button ng-click="pg.set({start: pg.next()}).">Next</button>
 ```
 
 and for rendering page numbers:
 
 ```html
-<span ng-repeat="n in [] | range: pg.pages">
+<span ng-repeat="n in [] | paginationRange: pg.pages">
 	<button ng-click="pagination.toPageId(n)">{{n}}</button>
 <span>
 ```
