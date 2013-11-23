@@ -87,4 +87,4 @@ For problems/suggestions please create an issue on Github.
 
 * AngularJS range filter: [http://www.yearofmoo.com/](http://www.yearofmoo.com/2012/10/more-angularjs-magic-to-supercharge-your-webapp.html#more-about-loops)
 * AngularJS pagination: [http://jsfiddle.net/2ZzZB/56/](http://jsfiddle.net/2ZzZB/56/)
-* Other uknown JSFiddles
+* Other unknown JSFiddles
