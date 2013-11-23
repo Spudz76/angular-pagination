@@ -1,17 +1,17 @@
-# Simple Pagination
+# Angular Pagination
 
 An AngularJS module for simple pagination on static data. No directives here, just a service and some helpful filters.
 
-Mostly based on various snippets which I found on JSFiddle, with some changes by me.
+Mostly based on various snippets which [@svileng](https://twitter.com/svileng) found on JSFiddle, with some changes.
 
 ## Quick start
 
-Include `simplePagination.js` after `angular.min.js`.
+Include `angular-pagination.js` after `angular.min.js`.
 
-Add the `SimplePagination` module as a dependency when creating your app, e.g.
+Add the `Pagination` module as a dependency when creating your app, e.g.
 
 ```
-var app = angular.module('myApp', ['SimplePagination']);`
+var app = angular.module('myApp', ['Pagination']);`
 ```
 
 Inject the `Pagination` service to the controller containing the data which you want to paginate, and set it on the $scope:
@@ -81,10 +81,11 @@ For problems/suggestions please create an issue on Github.
 
 ## Contributors
 
-* [@svileng](https://twitter.com/svileng)
+* [@spudz76](https://twitter.com/spudz76) (massive cleanups, renaming)
 
 ## Credits
 
+* [@svileng](https://twitter.com/svileng) (original repo)
 * AngularJS range filter: [http://www.yearofmoo.com/](http://www.yearofmoo.com/2012/10/more-angularjs-magic-to-supercharge-your-webapp.html#more-about-loops)
 * AngularJS pagination: [http://jsfiddle.net/2ZzZB/56/](http://jsfiddle.net/2ZzZB/56/)
 * Other unknown JSFiddles
