@@ -1,43 +1,69 @@
 # Angular Pagination
 
-An AngularJS module for simple pagination on static data. No directives here, just a service and some helpful filters.
+An AngularJS module for pagination on static or dynamic data. No directives here, just a service and some optional filters.
 
-Mostly based on various snippets which [@svileng](https://twitter.com/svileng) found on JSFiddle, with some changes.
+Mostly based on various snippets which [@svileng](https://twitter.com/svileng) found on JSFiddle, afterwards
+modified to support a wider variety of data sets. Also several useful helpers to cut down on controller and view match.
 
 ## Quick start
 
 Include `angular-pagination.js` after `angular.min.js`.
 
-Add the `Pagination` module as a dependency when creating your app, e.g.
+Add the `pagination` module as a dependency when creating your app, e.g.
 
-```
+```js
 var app = angular.module('myApp', ['pagination'])
 ```
 
 Inject the `Pagination` service to the controller containing the data which you want to paginate, and set it on the $scope:
 
-```
+```js
 app.controller('MyCtrl', ['$scope', 'Pagination',
 function($scope, Pagination){
-  $scope.pagination = Pagination.getNew()
+  $scope.pg = new Pagination({start: 0, limit: 10, total: 10})
 }])
 ```
 
-This defaults to 5 items per page. You can pass an optional parameter with the number of items you want per page:
+If no object is passed to the constructor it assumes the following defaults
+ * start *0*
+ * limit *10*
+ * total *0*
 
+To set updated values on the same instance use the `set` method. This is especially useful on dynamic backend data
+sets that require callbacks. For static front-end data sets the filters can be used.
+
+```js
+$scope.pg.set({start: 0, limit: 10, total: 10})
 ```
-$scope.pagination = Pagination.getNew(10)
+
+After setting the data either through calling `new(obj)` or `set(obj)` the service will automatically setup several
+helpers that can be used for rendering which are described below.
+
+## Rendering with Helpers
+
+For dynamic server backed data sets it is good to use helpers over filters here is how.
+
+* First Page `my_start_var = pg.first(); myListFunction()`
+* Previous Page `my_start_var = pg.previous(); myListFunction()`
+* Next Page `my_start_var = pg.next(); myListFunction()`
+* Last Page `my_start_var = pg.last(); myListFunction()`
+* Specific page `my_start_var = pg.forPage(3); myListFunction()`
+
+This example assume you have a controller like this
+```js
+app.controller('MyCtrl', ['$scope', 'Pagination',
+function($scope, Pagination){
+  $scope.my_start_var = 0
+  $scope.pg = new Pagination({start: 0, limit: 10, total: 10})
+  $scope.myListFunction = function(){
+    someFactory.list({start: my_start_var},function(res){
+      $scope.pg.set({start: my_start_var, total: res.count_total})
+    })
+  }
+}])
 ```
 
-Finally, calculate and set the number of pages depending on your data. Here's an example with a pre-defined `$scope.posts` array for a blog application:
-
-```
-$scope.pagination.numPages = Math.ceil($scope.posts.length/$scope.pagination.perPage)
-```
-
-Replace `$scope.posts` with whatever data you have initialised.
-
-## Rendering
+## Rendering with Filters
 
 There is a custom filter called `startFrom` to help you rendering items per page.
 
@@ -82,6 +108,7 @@ For problems/suggestions please create an issue on Github.
 ## Contributors
 
 * [@spudz76](https://twitter.com/spudz76) (massive cleanups, renaming)
+* [@nullivex](https://twitter.com/nullivex) (api rewrite, updated documentation)
 
 ## Credits
 
