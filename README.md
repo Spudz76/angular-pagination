@@ -75,7 +75,7 @@ ng-hide="pagination.page + 1 >= pagination.numPages" ng-click="pagination.nextPa
 
 ## Contributions
 
-Any pull requests are more than welcome. Please make your changes in your own branch, make sure the current specs in `simplePagination.spec.js` are passing (Jasmine/Karma) and update/add tests if necessary.
+Any pull requests are more than welcome. Please make your changes in your own branch, make sure the current specs in `angular-pagination.spec.js` are passing (Jasmine/Karma) and update/add tests if necessary.
 
 For problems/suggestions please create an issue on Github.
 
