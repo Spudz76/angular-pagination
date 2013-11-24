@@ -1,4 +1,4 @@
-# Angular Pagination
+# Angular Pagination [![Build Status](https://travis-ci.org/Spudz76/angular-pagination.png?branch=master)](https://travis-ci.org/Spudz76/angular-pagination)
 
 An AngularJS module for pagination on static or dynamic data. No directives here, just a service and some optional filters.
 
