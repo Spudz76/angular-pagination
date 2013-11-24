@@ -34,7 +34,7 @@ paginationModule.factory("Pagination", function(){
    * Total number of pages
    * @type {number}
    */
-  pagination.prototype.pages = 1
+  pagination.prototype.pages = 0
   /**
    * Current page
    * @type {number}
@@ -61,7 +61,7 @@ paginationModule.factory("Pagination", function(){
   pagination.prototype.process = function(){
     this.pages = Math.ceil(this.total / this.limit)
     this.page = Math.ceil(this.start / this.limit) + 1
-    this.range.start = this.total > 0 ? this.start + 1 : 0
+    this.range.start = (this.total > 0) ? (this.start + 1) : 0
     if(this.start + this.limit < this.total)
       this.range.end = this.start + this.limit
     else
@@ -73,14 +73,14 @@ paginationModule.factory("Pagination", function(){
    * @returns {boolean}
    */
   pagination.prototype.isFirst = function(){
-    return (this.page === 1)
+    return (1 === this.page)
   }
   /**
    * Determine if this last page is current selected
    * @returns {boolean}
    */
   pagination.prototype.isLast = function(){
-    return (this.page === this.pages)
+    return ((0 === this.pages) || (this.page === this.pages))
   }
   /**
    * Get the starting point of the first page
@@ -94,27 +94,21 @@ paginationModule.factory("Pagination", function(){
    * @returns {number}
    */
   pagination.prototype.previous = function(){
-    if(this.page <= 1)
-      return 0
-    else
-      return this.start - this.limit
+    return this.isFirst() ? 0 : this.start - this.limit
   }
   /**
    * Get the safe starting point of the next page
    * @returns {number}
    */
   pagination.prototype.next = function(){
-    if(this.page === this.pages)
-      return this.start
-    else
-      return this.start + this.limit
+    return this.isLast() ? this.start : this.start + this.limit
   }
   /**
    * Get the starting point of the last page
    * @returns {number}
    */
   pagination.prototype.last = function(){
-    return Math.floor((this.pages - 1) * this.limit)
+    return Math.max(0,Math.floor((this.pages - 1) * this.limit))
   }
   /**
    * Get the starting point of a specific page
@@ -125,7 +119,7 @@ paginationModule.factory("Pagination", function(){
     page = parseInt(page,10) || 1
     if(page < 1) page = 1
     if(page > this.pages) page = this.pages
-    return (page - 1) * this.limit
+    return Math.max(0,(page - 1) * this.limit)
   }
   /**
    * Get a range of buttons
@@ -135,10 +129,10 @@ paginationModule.factory("Pagination", function(){
   pagination.prototype.buttons = function(){
     var buttons = []
       , start, end
-    if(1 === this.page){
+    if(this.isFirst()){
       start = 1
-      end = this.buttons_max <= this.pages ? this.buttons_max : this.pages
-    } else if(this.page === this.pages){
+      end = (this.buttons_max <= this.pages) ? this.buttons_max : this.pages
+    } else if(this.isLast()){
       start = this.pages - (this.buttons_max - 1)
       end = this.pages
       if(start < 1) start = 1
@@ -164,9 +158,9 @@ paginationModule.factory("Pagination", function(){
    */
   pagination.prototype.set = function(obj){
     if("object" !== typeof obj) obj = {}
+    if("undefined" !== typeof obj.start) this.start = parseInt(obj.start,10)
     if("undefined" !== typeof obj.limit) this.limit = parseInt(obj.limit,10)
     if("undefined" !== typeof obj.total) this.total = parseInt(obj.total,10)
-    if("undefined" !== typeof obj.start) this.start = parseInt(obj.start,10)
     this.process()
   }
   return pagination
