@@ -244,4 +244,12 @@ describe("Angular Pagination",function(){
       expect(pg.start).toBe(100)
     })
   })
+  describe("Issues",function(){
+    it("shouldnt display user input start values when greater than total count; issue #1",function(){
+      pg.set({start: 50, limit: 10, total: 1})
+      expect(pg.range.start).toBe(1)
+      expect(pg.range.end).toBe(1)
+      expect(pg.range.total).toBe(1)
+    })
+  })
 })

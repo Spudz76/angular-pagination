@@ -62,6 +62,8 @@ paginationModule.factory("Pagination", function(){
     this.pages = Math.ceil(this.total / this.limit)
     this.page = Math.ceil(this.start / this.limit) + 1
     this.range.start = (this.total > 0) ? (this.start + 1) : 0
+    if(this.range.start > this.total)
+      this.range.start = this.total
     if(this.start + this.limit < this.total)
       this.range.end = this.start + this.limit
     else
