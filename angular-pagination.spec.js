@@ -63,7 +63,7 @@ describe("Angular Pagination", function(){
     expect(pg.page).toBe(1)
     expect(pg.start).toBe(0)
   })
-  it("should not be able tp previous below min",function(){
+  it("should not be able to previous below min",function(){
     pg.set({start: 40, limit: 20, total: 120})
     pg.set({start: pg.first()})
     pg.set({start: pg.previous()})
