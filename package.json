@@ -1,0 +1,30 @@
+{
+  "name": "angular-pagination",
+  "description": "Pagination for AngularJS",
+  "version": "0.2.2",
+  "authors": [
+    {
+      "name": "Tony Butler",
+      "email": "spudz76@gmail.com",
+      "homepage": "http://get-a-fucking-website"
+    },
+    {
+      "name": "Bryan Tong",
+      "email": "contact@nullivex.com",
+      "homepage": "http://bryantong.com"
+    }
+  ],
+  "keywords": [
+    "angular",
+    "pagination"
+  ],
+  "dependencies": {
+    "angular": "latest"
+  },
+  "devDependencies": {
+    "karma": "latest"
+  },
+  "scripts": {
+    "test": "karma start --single-run --browsers PhantomJS"
+  }
+}
