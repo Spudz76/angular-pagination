@@ -2,6 +2,10 @@
   "name": "angular-pagination",
   "description": "Pagination for AngularJS",
   "version": "0.2.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Spudz76/angular-pagination"
+  },
   "authors": [
     {
       "name": "Tony Butler",
