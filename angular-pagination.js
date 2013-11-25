@@ -127,8 +127,9 @@ paginationModule.factory("Pagination", function(){
    * When changing the limit this returns the new start value
    * @returns {number}
    */
-  pagination.prototype.forLimitChange = function(){
-    return ((this.pages - 1) * this.limit)
+  pagination.prototype.forLimitChange = function(limit){
+    limit = limit || this.limit
+    return parseInt(Math.floor(this.start / limit) * limit,10)
   }
   /**
    * Get a range of buttons

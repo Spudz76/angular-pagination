@@ -99,9 +99,16 @@ correct starting record as well.
 Here is an example:
 ```jade
 div
-  select(ng-model="limit", ng-change="start = pg.forLimitChange(); list()")
+  select(ng-model="limit", ng-change="start = pg.forLimitChange(limit); list()")
     option(ng-repeat="row in [10,20,50,100,500]", ng-value="row") {{ row }}
   |  Per page
+```
+
+In the above example we pass in the currently set limit to get the "would be" start value.
+If the database has already been changed then the currently lined up value can be obtained
+by doing
+```js
+$scope.start = pg.forLimitChange()
 ```
 
 ## Rendering with Filters
