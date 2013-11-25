@@ -88,6 +88,22 @@ div
 Which should yield something like this:
 ![Pagination Bar Example](http://ft.trillian.im/32beade6276ff4c3b71543f301afc6fa489725b7/6lm6jqGoRPs3t7wA4opQxfUdshv3H.jpg)
 
+### Dynamic Limit
+
+Sometimes it is useful to change the limit per page dynamically say with a drop down.
+That is where `forLimitChange()` becomes useful as it will return the correct start
+value after a limit change which will allow everything to line up correctly and the user
+to be on a correct page. This will also make sure the database is set to return the
+correct starting record as well.
+
+Here is an example:
+```jade
+div
+  select(ng-model="limit", ng-change="start = pg.forLimitChange(); list()")
+    option(ng-repeat="row in [10,20,50,100,500]", ng-value="row") {{ row }}
+  |  Per page
+```
+
 ## Rendering with Filters
 
 There is a custom filter called `paginationStart` to help you rendering items per page.

@@ -245,11 +245,18 @@ describe("Angular Pagination",function(){
     })
   })
   describe("Issues",function(){
-    it("shouldnt display user input start values when greater than total count; issue #1",function(){
+    it("should not display user input start values when greater than total count; issue #1",function(){
       pg.set({start: 50, limit: 10, total: 1})
       expect(pg.range.start).toBe(1)
       expect(pg.range.end).toBe(1)
       expect(pg.range.total).toBe(1)
+    })
+    it("should not use old start when limit changes on the last page; issue #3",function(){
+      pg.set({start: 0, limit: 10, total: 666})
+      pg.set({start: pg.last()})
+      expect(pg.start).toBe(660)
+      pg.set({limit: 50})
+      expect(pg.forLimitChange()).toBe(650)
     })
   })
 })

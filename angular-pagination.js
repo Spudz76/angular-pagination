@@ -124,6 +124,13 @@ paginationModule.factory("Pagination", function(){
     return Math.max(0,(page - 1) * this.limit)
   }
   /**
+   * When changing the limit this returns the new start value
+   * @returns {number}
+   */
+  pagination.prototype.forLimitChange = function(){
+    return ((this.pages - 1) * this.limit)
+  }
+  /**
    * Get a range of buttons
    *  Use the buttons_max setting to change the amount, defaults to 5
    * @returns {Array}
