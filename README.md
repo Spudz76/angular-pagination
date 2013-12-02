@@ -162,7 +162,7 @@ For problems/suggestions please create an issue on Github.
 
 ## Credits
 
-* [@svileng](https://twitter.com/svileng) (original repo)
+* [@svileng](https://twitter.com/svileng) (original repo @ [angular-SimplePagination](https://github.com/svileng/angular-SimplePagination))
 * AngularJS range filter: [http://www.yearofmoo.com/](http://www.yearofmoo.com/2012/10/more-angularjs-magic-to-supercharge-your-webapp.html#more-about-loops)
 * AngularJS pagination: [http://jsfiddle.net/2ZzZB/56/](http://jsfiddle.net/2ZzZB/56/)
 * Other unknown JSFiddles
