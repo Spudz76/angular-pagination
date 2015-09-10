@@ -1,7 +1,8 @@
 {
   "name": "angular-pagination",
   "version": "0.2.6",
+  "main": "angular-pagination.js",
   "dependencies": {
-    "angular": "1.2.x"
+    "angular": ">=1.2.0"
   }
 }
