@@ -4,5 +4,12 @@
   "main": "angular-pagination.js",
   "dependencies": {
     "angular": ">=1.2.0"
-  }
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }
