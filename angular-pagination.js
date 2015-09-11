@@ -1,3 +1,5 @@
+(function() {
+
 /* global angular: false */
 "use strict";
 
@@ -190,3 +192,5 @@ paginationModule.filter("paginationRange", function(){
     return input
   }
 })
+
+})();
